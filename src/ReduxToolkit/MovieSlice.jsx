@@ -12,6 +12,7 @@ export const fetchAsyncMovies = createAsyncThunk(
       const response = await axios.get(
         `https://api.themoviedb.org/3/discover/movie?api_key=512527e45f78c9fe542face1e16e9ad9&with_genres=${genre}&page=${count}`
       );
+      console.log("genra", response.data.results)
       return response.data.results;
     }
   );

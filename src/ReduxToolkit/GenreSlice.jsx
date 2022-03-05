@@ -3,7 +3,9 @@ import axios from "axios";
 
 export const fetchGenre = createAsyncThunk ("genre/fetchGenre",
     async () => {
-        const res = await axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=512527e45f78c9fe542face1e16e9ad9");
+        const res = await axios.get(
+            "https://api.themoviedb.org/3/genre/movie/list?api_key=512527e45f78c9fe542face1e16e9ad9");
+        //console.log("genra", res.data.genras)
         return res.data.genres
     }
 )
@@ -16,10 +18,10 @@ const genreSlice = createSlice({
     initialState,
     extraReducers: {
         [fetchGenre.pending]: () => {
-            console.log("pending")
+            //console.log("pending")
         },
         [fetchGenre.fulfilled]: (state, { payload }) => {
-            console.log("genre fulfilled")
+            //console.log("genre fulfilled")
             return { ...state, genre: payload }
         }
     }

@@ -21,6 +21,7 @@ const TopMovies = () => {
         {movies.map((item) => {
           return (
             <MovieCard
+              id={item.id}
               key={item.id}
               imgUrl={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
             />
