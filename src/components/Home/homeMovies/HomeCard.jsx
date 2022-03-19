@@ -16,6 +16,7 @@ const HomeCard = ({trendingData,sectionName}) => {
  
   const settings = {
     dots: true,
+    arrows:false,
     infinite: true,
     speed: 300,
     slidesToShow: 6.1,
@@ -37,7 +38,7 @@ const HomeCard = ({trendingData,sectionName}) => {
         {trendingData.map((item) => 
           
             
-          <div className="mt-4 mx-3">
+          <div className="mt-4 mx-4">
             <Link to={`/movie/${item.id}`}><img
                   className=" w-60"
                     src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}

@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div>
      
-      {/* <TrendingMovieSlider data={data} /> */}
+      <TrendingMovieSlider data={data} />
       <TrendingMovies/>
       
       
