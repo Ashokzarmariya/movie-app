@@ -6,6 +6,7 @@ import trendingReducer from './TrendingSlice'
 import MovieDetailSlice from './MovieDetailSlice'
 import SearchSlice from './SearchSlice'
 import pageReducer from "./pageSlice";
+import SimilerMovieSlice from './SimilerMovieSlice'
 
 export const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
         Trending: trendingReducer,
         singleMove:MovieDetailSlice,
         searchResults: SearchSlice,
-        page:pageReducer
+        page: pageReducer,
+        similarMovie: SimilerMovieSlice,
     },
 })

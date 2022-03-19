@@ -10,7 +10,7 @@ export const fetchSearch = createAsyncThunk(
     async (keyword) => {
         const res = await axios.get(
             `https://api.themoviedb.org/3/search/movie?api_key=512527e45f78c9fe542face1e16e9ad9&query=${keyword}`);
-        console.log(res.data.results)
+        //console.log(res.data.results)
         return res.data.results;
     }
 )

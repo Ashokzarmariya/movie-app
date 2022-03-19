@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import "./homeCard.css";
 //MdOutlineNavigateNext
 
-const HomeCard = ({imgUrl,trendingData,sectionName}) => {
+const HomeCard = ({trendingData,sectionName}) => {
     const slideRef = useRef();
     const [flag, setFlage] = useState(false);
     console.log(slideRef.current)
@@ -16,11 +16,10 @@ const HomeCard = ({imgUrl,trendingData,sectionName}) => {
  
   const settings = {
     dots: true,
-    arrows: true,
     infinite: true,
     speed: 300,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 6.1,
+    slidesToScroll: 5,
   };
 
   return (
@@ -38,14 +37,14 @@ const HomeCard = ({imgUrl,trendingData,sectionName}) => {
         {trendingData.map((item) => 
           
             
-              <div className="mt-4 mx-3">
-                <img
+          <div className="mt-4 mx-3">
+            <Link to={`/movie/${item.id}`}><img
                   className=" w-60"
                     src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-                    //https://image.tmdb.org/t/p/original/${item.poster_path}
-                  ///https://image.tmdb.org/t/p/original/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg
                   alt=""
                 />
+            </Link>
+                
               </div>
             
           
