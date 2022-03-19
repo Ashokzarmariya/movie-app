@@ -1,17 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+//import { Link } from "react-router-dom";
+import YouTube from "react-youtube";
 import {
   fetchMovieVideo,
   fetchSingleMovie,
 } from "../../ReduxToolkit/MovieDetailSlice";
-import YouTube from "react-youtube";
-//import "./DetailCss.css"
+//
+//import Loading from "../Spinner/Loading";
+import "./DetailCss.css";
 
 const Details = () => {
   const { id } = useParams() || "id";
   const dispatch = useDispatch();
   const data = useSelector((store) => store.singleMove);
+  const loading = data.loding;
+  //console.log(loading)
+
   console.log("store", data);
   useEffect(() => {
     dispatch(fetchSingleMovie(id));
@@ -19,8 +25,8 @@ const Details = () => {
   }, [dispatch, id]);
 
   const opts = {
-    height: "390",
-    width: "640",
+    height:"100%",
+    width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
@@ -29,44 +35,39 @@ const Details = () => {
 
   return (
     <>
-      <div>
-        <div className="container flex relative mt-5">
-          <div className="bg-gray-800 w-2/4 h-96 bg-opacity-40 z-10 absolute left-0">
-            <div className="p-10">
-              <h1 className="text-white text-3xl font-bold">
-                {" "}
-                {data.movieDetail.original_title}
-              </h1>
-              <div className="flex">
-                <p className="text-white mt-10">
-                  {" "}
-                  {data.movieDetail.release_date}
-                </p>
-                <p className="text-white mt-10 ml-1">
-                  {" "}
-                  {data.movieDetail.spoken_languages[0].name}
-                </p>
-                {/* <p className="text-white mt-10 ml-1">
-                  {" "}
-                  {data.movieDetail.genres[0].name}
-                </p> */}
-              </div>
+      {!loading && (
+        <div className="">
+          <div className=" flex relative mt-5 container bg-gray-900 ">
+            <div className="bg-gray-900  w-2/4 p-16  z-0 absolute left-0">
+              <div className="p-10">
+                <h1 className="text-white text-3xl font-bold">
+                  {data.movieDetail.original_title}
+                </h1>
+                <div className="flex">
+                  <p className="text-white mt-10">
+                    {data.movieDetail.release_date}
+                  </p>
+                  <p className="text-white mt-10 ml-1">
+                    {" "}
+                    {data.movieDetail.spoken_languages[0].english_name}
+                  </p>
+                  <p className="text-white mt-10 ml-1">
+                    {" "}
+                    {data.movieDetail.genres[0].name}
+                  </p>
+                </div>
 
-              <p className="text-white mt-10"> {data.movieDetail.overview}</p>
+                <p className="text-white mt-10"> {data.movieDetail.overview}</p>
+              </div>
+            </div>
+            <div className="right-0 absolute w-2/4 p-2 bg-gray-900">
+              {/* <Link to={`/movie/trailer/${data.movieVideo[0].key}`}> */}
+              {/* <YouTube videoId={data.movieVideo[0].key} opts={opts} /> */}
+              <img className=" " src="https://image.tmdb.org/t/p/original/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg" alt="" />
             </div>
           </div>
-          <div className="bg-green-600 w-4/5 right-0 absolute">
-            <img
-              className="w-2/3 absolute right-0 h-96"
-              src={`https://image.tmdb.org/t/p/original/${data.movieDetail.backdrop_path}`}
-              alt="Sphere"
-            />
-          </div>
         </div>
-      </div>
-      {/* <div>
-        <YouTube videoId="X48VuDVv0do" opts={opts} />
-      </div> */}
+      )}
     </>
   );
 };

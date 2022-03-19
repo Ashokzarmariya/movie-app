@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTrendingMovies } from "../../ReduxToolkit/TrendingSlice";
-import TrendingMovieSlider from "../Carousel/Carousel";
+import { fetchTrendingMovies } from "../../../ReduxToolkit/TrendingSlice";
+import TrendingMovieSlider from "../../Carousel/Carousel";
+import TrendingMovies from "../homeMovies/TrendingMovies";
 
 
 
@@ -17,7 +18,8 @@ const Home = () => {
   return (
     <div>
      
-      <TrendingMovieSlider data={data}/>
+      {/* <TrendingMovieSlider data={data} /> */}
+      <TrendingMovies/>
       
       
     </div>

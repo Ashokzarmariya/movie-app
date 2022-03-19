@@ -16,7 +16,7 @@ const TopMovies = () => {
     },[dispatch,id])
   return (
     <div>
-          <h1>ashok</h1>
+          
           <div className="flex flex-wrap justify-center">
         {movies.map((item) => {
           return (

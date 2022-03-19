@@ -38,7 +38,7 @@ const movieDetailSlice = createSlice({
         },
         [fetchSingleMovie.fulfilled]: (state, { payload }) => {
             //console.log("single Movie fullfiled")
-            return { ...state, movieDetail: payload, loding:false }
+            return { ...state, movieDetail: payload  }
         },
         [fetchSingleMovie.rejected]: () => {
             //console.log("single movie rejected")
@@ -49,7 +49,7 @@ const movieDetailSlice = createSlice({
         },
         [fetchMovieVideo.fulfilled]: (state,{payload}) => {
             //console.log("movie video fullfilled")
-            return {...state, movieVideo:payload}
+            return {...state, movieVideo:payload, loding:false}
         }
     }
 });
